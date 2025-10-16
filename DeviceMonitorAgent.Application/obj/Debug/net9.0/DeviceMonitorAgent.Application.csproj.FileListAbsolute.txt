@@ -1,0 +1,15 @@
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\bin\Debug\net9.0\DeviceMonitorAgent.Application.deps.json
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\bin\Debug\net9.0\DeviceMonitorAgent.Application.dll
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\bin\Debug\net9.0\DeviceMonitorAgent.Application.pdb
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\bin\Debug\net9.0\DeviceMonitorAgent.Domain.dll
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\bin\Debug\net9.0\DeviceMonitorAgent.Domain.pdb
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\DeviceMonitorAgent.Application.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\DeviceMonitorAgent.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\DeviceMonitorAgent.Application.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\DeviceMonitorAgent.Application.AssemblyInfo.cs
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\DeviceMonitorAgent.Application.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\DeviceMo.2BA56E38.Up2Date
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\DeviceMonitorAgent.Application.dll
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\refint\DeviceMonitorAgent.Application.dll
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\DeviceMonitorAgent.Application.pdb
+C:\Users\User\OneDrive - 3i-Solutions\Documents\project\DeviceMonitorAgent.Application\obj\Debug\net9.0\ref\DeviceMonitorAgent.Application.dll
