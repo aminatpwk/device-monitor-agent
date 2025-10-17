@@ -8,7 +8,7 @@ namespace DeviceMonitorAgent.Domain.Models
 {
     public class DeviceStatus
     {
-        public Guid DeviceId { get; set; } 
+        public string DeviceIdentifier { get; set; } 
         public string DeviceName { get; set; } 
         public string DeviceType { get; set; } 
         public bool IsConnected { get; set; }

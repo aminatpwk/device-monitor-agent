@@ -14,6 +14,7 @@ namespace DeviceMonitorAgent.Domain.Enum
         ConnectRemote,
         DisconnectRemote,
         Execute,
-        ConfigureAgent
+        ConfigureAgent,
+        GetInfo
     }
 }
