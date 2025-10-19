@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DeviceMonitorAgent.Worker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd5a7faa895a1f13541b3c3f3ba9b08be268bd03")]
 [assembly: System.Reflection.AssemblyProductAttribute("DeviceMonitorAgent.Worker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DeviceMonitorAgent.Worker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

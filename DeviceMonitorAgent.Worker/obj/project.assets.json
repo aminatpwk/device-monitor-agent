@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net9.0": {
+      "LiteDB/5.0.21": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/LiteDB.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/LiteDB.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/9.0.10": {
         "type": "package",
         "dependencies": {
@@ -578,6 +594,15 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
+      "System.Buffers/4.5.1": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      },
       "System.Diagnostics.EventLog/9.0.10": {
         "type": "package",
         "compile": {
@@ -620,6 +645,9 @@
       "DeviceMonitorAgent.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "LiteDB": "5.0.21"
+        },
         "compile": {
           "bin/placeholder/DeviceMonitorAgent.Domain.dll": {}
         },
@@ -631,7 +659,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "DeviceMonitorAgent.Application": "1.0.0"
+          "DeviceMonitorAgent.Application": "1.0.0",
+          "LiteDB": "5.0.21"
         },
         "compile": {
           "bin/placeholder/DeviceMonitorAgent.Infrastructure.dll": {}
@@ -643,6 +672,26 @@
     }
   },
   "libraries": {
+    "LiteDB/5.0.21": {
+      "sha512": "ykJ7ffFl7P9YQKR/PLci6zupiLrsSCNkOTiw6OtzntH7d2kCYp5L1+3a/pksKgTEHcJBoPXFtg7VZSGVBseN9w==",
+      "type": "package",
+      "path": "litedb/5.0.21",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AppVeyorSettings.json",
+        "LICENSE",
+        "icon_64x64.png",
+        "lib/net45/LiteDB.dll",
+        "lib/net45/LiteDB.xml",
+        "lib/netstandard1.3/LiteDB.dll",
+        "lib/netstandard1.3/LiteDB.xml",
+        "lib/netstandard2.0/LiteDB.dll",
+        "lib/netstandard2.0/LiteDB.xml",
+        "litedb.5.0.21.nupkg.sha512",
+        "litedb.nuspec"
+      ]
+    },
     "Microsoft.Extensions.Configuration/9.0.10": {
       "sha512": "UAm3SLGAMlJdowbN+/xnh2UGJkdJoXVm4MsdhZ60dAMS8jteoyCx5WfIab5DKv0TCYpdhVecLJVUjEO3abs9UQ==",
       "type": "package",
@@ -1481,6 +1530,37 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "System.Buffers/4.5.1": {
+      "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
+      "type": "package",
+      "path": "system.buffers/4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Buffers.dll",
+        "lib/net461/System.Buffers.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.1/System.Buffers.dll",
+        "lib/netstandard1.1/System.Buffers.xml",
+        "lib/netstandard2.0/System.Buffers.dll",
+        "lib/netstandard2.0/System.Buffers.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net45/System.Buffers.dll",
+        "ref/net45/System.Buffers.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.1/System.Buffers.dll",
+        "ref/netstandard1.1/System.Buffers.xml",
+        "ref/netstandard2.0/System.Buffers.dll",
+        "ref/netstandard2.0/System.Buffers.xml",
+        "ref/uap10.0.16299/_._",
+        "system.buffers.4.5.1.nupkg.sha512",
+        "system.buffers.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Diagnostics.EventLog/9.0.10": {
       "sha512": "Jc+az1pTMujPLDn2j5eqSfzlO7j/T1K/LB7THxdfRWOxujE4zaitUqBs7sv1t6/xmmvpU6Xx3IofCs4owYH0yQ==",
       "type": "package",
@@ -1545,11 +1625,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\OneDrive - 3i-Solutions\\Documents\\project\\DeviceMonitorAgent.Worker\\DeviceMonitorAgent.Worker.csproj",
+      "projectUniqueName": "C:\\xampp\\htdocs\\My projects\\c34c practice project\\device-monitor-agent\\DeviceMonitorAgent.Worker\\DeviceMonitorAgent.Worker.csproj",
       "projectName": "DeviceMonitorAgent.Worker",
-      "projectPath": "C:\\Users\\User\\OneDrive - 3i-Solutions\\Documents\\project\\DeviceMonitorAgent.Worker\\DeviceMonitorAgent.Worker.csproj",
+      "projectPath": "C:\\xampp\\htdocs\\My projects\\c34c practice project\\device-monitor-agent\\DeviceMonitorAgent.Worker\\DeviceMonitorAgent.Worker.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\OneDrive - 3i-Solutions\\Documents\\project\\DeviceMonitorAgent.Worker\\obj\\",
+      "outputPath": "C:\\xampp\\htdocs\\My projects\\c34c practice project\\device-monitor-agent\\DeviceMonitorAgent.Worker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1570,11 +1650,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\User\\OneDrive - 3i-Solutions\\Documents\\project\\DeviceMonitorAgent.Application\\DeviceMonitorAgent.Application.csproj": {
-              "projectPath": "C:\\Users\\User\\OneDrive - 3i-Solutions\\Documents\\project\\DeviceMonitorAgent.Application\\DeviceMonitorAgent.Application.csproj"
+            "C:\\xampp\\htdocs\\My projects\\c34c practice project\\device-monitor-agent\\DeviceMonitorAgent.Application\\DeviceMonitorAgent.Application.csproj": {
+              "projectPath": "C:\\xampp\\htdocs\\My projects\\c34c practice project\\device-monitor-agent\\DeviceMonitorAgent.Application\\DeviceMonitorAgent.Application.csproj"
             },
-            "C:\\Users\\User\\OneDrive - 3i-Solutions\\Documents\\project\\DeviceMonitorAgent.Infrastructure\\DeviceMonitorAgent.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\User\\OneDrive - 3i-Solutions\\Documents\\project\\DeviceMonitorAgent.Infrastructure\\DeviceMonitorAgent.Infrastructure.csproj"
+            "C:\\xampp\\htdocs\\My projects\\c34c practice project\\device-monitor-agent\\DeviceMonitorAgent.Infrastructure\\DeviceMonitorAgent.Infrastructure.csproj": {
+              "projectPath": "C:\\xampp\\htdocs\\My projects\\c34c practice project\\device-monitor-agent\\DeviceMonitorAgent.Infrastructure\\DeviceMonitorAgent.Infrastructure.csproj"
             }
           }
         }
@@ -1616,7 +1696,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
