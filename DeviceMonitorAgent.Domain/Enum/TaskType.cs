@@ -9,8 +9,10 @@ namespace DeviceMonitorAgent.Domain.Enum
     public enum TaskType
     {
         RestartDevice,
+        RestartAgent,
         RefreshStatus,
         DownloadLogs,
+        DownloadAgentLogs,
         ConnectRemote,
         DisconnectRemote,
         Execute,
