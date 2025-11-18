@@ -1,13 +1,11 @@
 # Device Monitor Agent
 
+![.NET](https://img.shields.io/badge/.NET-9.0-blueviolet)
+![Database](https://img.shields.io/badge/Database-LiteDB-informational)
+
 A cross-platform monitoring agent built with .NET following Clean Architecture principles. This project simulates a production-grade device monitoring and management system.
 
-## Development Status
-**Timeline:** 2-week learning sprint (Oct 2025)
-
-This is an active learning project being built incrementally to understand concepts required for enterprise monitoring systems.
-
-## Architecture Goals
+## Architecture 
 
 The project follows **Clean Architecture** with clear separation:
 - **Domain** - Business models 
@@ -15,7 +13,7 @@ The project follows **Clean Architecture** with clear separation:
 - **Infrastructure** - Provider implementations
 - **Worker** - Service host and entry point
 
-## What This Will Become
+## Idea
 
 A monitoring agent that:
 - Runs as a background service on Windows/Linux
