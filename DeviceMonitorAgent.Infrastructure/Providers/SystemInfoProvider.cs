@@ -24,15 +24,25 @@ namespace DeviceMonitorAgent.Infrastructure.Providers
 
             switch (task.TaskType)
             {
-                case task.TaskType = TaskType.GetInfo:
+                case TaskType.GetInfo:
                     var status = await GetStatusAsync();
-                    result.Success = true;
+                    result.TaskStatus = Status.Good;
                     result.Message = "System information retrieved successfully";
                     result.Data = status.Properties;
                     break;
+                case TaskType.RefreshStatus:
+                    var refreshedStatus = await GetStatusAsync();
+                    result.TaskStatus = Status.Good;
+                    result.Message = "System status refreshed successfully";
+                    result.Data = refreshedStatus.Properties;
+                    break;
                 default:
-
+                    result.TaskStatus = Status.NonUrgent;
+                    result.Message = $"Task type {task.TaskType} is not supported by SystemInfoProvider";
+                    break;
             }
+
+            return result;
         }
 
         public async Task<DeviceStatus> GetStatusAsync()
