@@ -1,15 +1,16 @@
 using DeviceMonitorAgent.Worker;
 using DeviceMonitorAgent.Infrastructure.Data;
+using DeviceMonitorAgent.Infrastructure;
 
 
 var builder = Host.CreateApplicationBuilder(args);
+builder.Services.ConfigureInfrastructureServices(builder.Configuration);
+
 builder.Services.AddHostedService<Worker>();
 
-builder.Services.AddSingleton<ILiteDbContext>(sp =>
-{
-    string connectionString = "Filename=agent_state.db; Connection=shared";
-    return new LiteDbContext(connectionString);
-});
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
 
 var host = builder.Build();
 host.Run();
