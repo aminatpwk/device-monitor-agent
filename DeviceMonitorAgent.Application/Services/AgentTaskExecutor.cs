@@ -1,6 +1,7 @@
 ﻿using DeviceMonitorAgent.Application.Interfaces;
 using DeviceMonitorAgent.Domain.Enum;
 using DeviceMonitorAgent.Domain.Models;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -8,16 +9,16 @@ namespace DeviceMonitorAgent.Application.Services
 {
     public class AgentTaskExecutor : IAgentTaskExecutor
     {
-        private readonly ILogCollector _logCollector;
-        public AgentTaskExecutor(ILogCollector logCollector)
+        private readonly ILogger<AgentTaskExecutor> _logger;
+        public AgentTaskExecutor(ILogger<AgentTaskExecutor> logger)
         {
-            _logCollector = logCollector;
+            _logger = logger;
         }
 
 
         public TaskResult ExecuteAgentTask(AgentTask task)
         {
-            Console.WriteLine($"Executing agent task: {task.TaskType} (Task ID: {task.TaskId})");
+            _logger.LogInformation($"Executing agent task: {task.TaskType} (Task ID: {task.TaskId})");
             try
             {
                 return task.TaskType switch

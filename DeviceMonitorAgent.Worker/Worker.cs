@@ -10,13 +10,15 @@ public class Worker : BackgroundService
     private readonly IAgentStateRepository _agentStateRepository;
     private readonly IAgentTaskExecutor _agentTaskExecutor;
     private readonly IEnumerable<IDeviceProvider> _deviceProviders;
+    public readonly ITaskRouter _taskRouter;
 
-    public Worker(ILogger<Worker> logger, IAgentStateRepository agentStateRepository, IAgentTaskExecutor agentTaskExecutor, IEnumerable<IDeviceProvider> deviceProviders)
+    public Worker(ILogger<Worker> logger, IAgentStateRepository agentStateRepository, IAgentTaskExecutor agentTaskExecutor, IEnumerable<IDeviceProvider> deviceProviders, ITaskRouter taskRouter)
     {
         _logger = logger;
         _agentStateRepository = agentStateRepository;
         _agentTaskExecutor = agentTaskExecutor;
         _deviceProviders = deviceProviders;
+        _taskRouter = taskRouter;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -82,7 +84,7 @@ public class Worker : BackgroundService
             _logger.LogInformation("Processing task {TaskId} of type {TaskType}", task.TaskId, task.TaskType);
             try
             {
-                _agentTaskExecutor.ExecuteAgentTask(task);
+                _taskRouter.RouteAndExecute(task);
                 _logger.LogInformation("Task {TaskId} completed", task.TaskId);
             }
             catch(Exception ex)
