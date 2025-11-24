@@ -1,6 +1,7 @@
 ﻿using DeviceMonitorAgent.Application.Abstractions;
 using DeviceMonitorAgent.Application.Interfaces;
 using DeviceMonitorAgent.Application.Services;
+using DeviceMonitorAgent.Infrastructure.Configuration;
 using DeviceMonitorAgent.Infrastructure.Data;
 using DeviceMonitorAgent.Infrastructure.Providers;
 using DeviceMonitorAgent.Infrastructure.Repositories;
@@ -24,6 +25,10 @@ namespace DeviceMonitorAgent.Infrastructure
             services.AddSingleton<IAgentTaskExecutor, AgentTaskExecutor>();
             services.AddSingleton<IDeviceProvider, SystemInfoProvider>();
 
+            //TODO: add configuration loading here 
+            services.AddSingleton<PlatformApiConfiguration>();
+
+            //TODO: configure HTTP Client for Platform API communication later (RegistrationService, StatusReporter, TaskPoller, ResultReporter)
             return services;
         }
     }
