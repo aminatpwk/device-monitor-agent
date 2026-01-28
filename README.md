@@ -3,7 +3,7 @@
 ![.NET](https://img.shields.io/badge/.NET-9.0-blueviolet)
 ![Database](https://img.shields.io/badge/Database-LiteDB-informational)
 
-A cross-platform monitoring agent built with .NET following Clean Architecture principles. This project simulates a production-grade device monitoring and management system.
+A cross-platform monitoring agent built with .NET following Clean Architecture principles. This project simulates a device monitoring and management system.
 
 ## Architecture 
 
