@@ -10,9 +10,11 @@ namespace DeviceMonitorAgent.Application.Services
     public class AgentTaskExecutor : IAgentTaskExecutor
     {
         private readonly ILogger<AgentTaskExecutor> _logger;
-        public AgentTaskExecutor(ILogger<AgentTaskExecutor> logger)
+        private readonly ILogCollector _logCollector;
+        public AgentTaskExecutor(ILogger<AgentTaskExecutor> logger, ILogCollector logCollector)
         {
             _logger = logger;
+            _logCollector = logCollector;
         }
 
 
