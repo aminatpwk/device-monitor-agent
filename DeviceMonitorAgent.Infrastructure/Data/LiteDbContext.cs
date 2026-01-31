@@ -16,8 +16,8 @@ namespace DeviceMonitorAgent.Infrastructure.Data
         {
             _database = new LiteDatabase(connectionString);
 
-            //_database.GetCollection<AgentTask>("AgentTask").EnsureIndex(x => x.CreatedAt);
-            //_database.GetCollection<AgentRegistration>("AgentRegistration").EnsureIndex(x => x.RegistrationToken);
+            _database.GetCollection<AgentTask>("AgentTask").EnsureIndex(x => x.CreatedAt);
+            _database.GetCollection<AgentRegistration>("AgentRegistration").EnsureIndex(x => x.RegistrationToken);
 
         }
 
