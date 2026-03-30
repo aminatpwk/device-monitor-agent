@@ -38,12 +38,13 @@ public class RegistrationService : IRegistrationService
             {
                 var registerResponse = await response.Content.ReadFromJsonAsync<AgentRegistration>();
 
-                _logger.LogInformation("Agent registered successfully. AgentId: {AgentId}", registerResponse.PlatformAgentId);
+                _logger.LogInformation("Agent registered successfully. AgentCode: {AgentCode}", registerResponse.AgentCode);
                 return new AgentRegistration
                 {
-                    PlatformAgentId = registerResponse.PlatformAgentId,
+                    AgentCode = registerResponse.AgentCode,
                     SerialNumber = serialNumber,
-                    RegistrationToken = registerResponse.RegistrationToken
+                    RegistrationToken = registerResponse.RegistrationToken,
+                    DeviceCode = registerResponse.DeviceCode
                 };
             }
             else
@@ -76,7 +77,7 @@ public class RegistrationService : IRegistrationService
                 return true;
             }else if (response.StatusCode == System.Net.HttpStatusCode.NotFound || response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
-                _logger.LogWarning("Registration is invalid for AgentId: {AgentId}", registration.PlatformAgentId);
+                _logger.LogWarning("Registration is invalid for AgentCode: {AgentCode}", registration.AgentCode);
                 return false;
             }
             else

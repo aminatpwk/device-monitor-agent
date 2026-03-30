@@ -34,29 +34,34 @@ public class Worker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        EnsureAgentRegistration(stoppingToken);
+        await EnsureAgentRegistration(stoppingToken);
         CollectAndReportStatus();
         PollAndProcessTasks();
         await Task.WhenAll();
     }
 
-    private void EnsureAgentRegistration(CancellationToken stoppingToken)
+    private async Task EnsureAgentRegistration(CancellationToken stoppingToken)
     {
         try
         {
             var registration = _agentStateRepository.GetAgentRegistration();
-            if (registration == null)
+            if (registration != null)
             {
-                _logger.LogInformation("Agent not registered. Performing first-time registration.");
-                var newRegistration = new AgentRegistration
+                var isValid = await _RegistrationService.ValidateRegistrationAsync(registration);
+                if (isValid)
                 {
-                    PlatformAgentId = Guid.NewGuid(),
-                    SerialNumber = Environment.MachineName,
-                    RegistrationToken = Guid.NewGuid().ToString()
-                };
-                _agentStateRepository.SaveAgentRegistration(newRegistration);
+                    _logger.LogInformation(
+                        "Existing registration valid. AgentCode: {AgentCode}, DeviceCode: {DeviceCode}",
+                        registration.AgentCode, registration.DeviceCode);
+                    return;
+                }
+                _logger.LogWarning("Existing registration is no longer valid. Re-registering.");
             }
-        }catch(Exception ex)
+
+            var newRegistration = await _RegistrationService.RegisterAgentAsync(Environment.MachineName);
+            _agentStateRepository.SaveAgentRegistration(newRegistration);
+        }
+        catch(Exception ex)
         {
             _logger.LogError(ex, "Error during agent registration.");
             throw;

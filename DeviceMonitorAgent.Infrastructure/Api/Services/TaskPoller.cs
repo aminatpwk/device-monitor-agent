@@ -35,7 +35,7 @@ public class TaskPoller : ITaskPoller
 
         try
         {
-            var endpoint = _config.TaskPollEndpoint.Replace("{agentId}", registration.PlatformAgentId.ToString());
+            var endpoint = _config.TaskPollEndpoint.Replace("{agentId}", registration.AgentCode.ToString());
             var response = await _httpClient.GetAsync(endpoint);
             if (response.IsSuccessStatusCode)
             {

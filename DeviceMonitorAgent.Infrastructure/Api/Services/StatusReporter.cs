@@ -35,7 +35,8 @@ public class StatusReporter : IStatusReporter
 
         var request = new ReportStatusRequest
         {
-            AgentId = registration.PlatformAgentId,
+            AgentCode = registration.AgentCode,
+            DeviceCode = registration.DeviceCode,
             DeviceIdentifier = status.DeviceIdentifier,
             DeviceName = status.DeviceName,
             DeviceType = status.DeviceType,
@@ -46,7 +47,7 @@ public class StatusReporter : IStatusReporter
 
         try
         {
-            var endpoint = _config.StatusReportEndpoint.Replace("{agentId}", registration.PlatformAgentId.ToString());
+            var endpoint = _config.StatusReportEndpoint.Replace("{agentId}", registration.AgentCode.ToString());
             var response = await _httpClient.PostAsJsonAsync(endpoint, request);
             if (response.IsSuccessStatusCode)
             {
@@ -84,7 +85,7 @@ public class StatusReporter : IStatusReporter
         var statusList = statuses.ToList();
         var requests = statusList.Select(status => new ReportStatusRequest
         {
-            AgentId = registration.PlatformAgentId,
+            AgentCode = registration.AgentCode,
             DeviceIdentifier = status.DeviceIdentifier,
             DeviceName = status.DeviceName,
             DeviceType = status.DeviceType,

@@ -2,7 +2,8 @@
 
 public class ReportStatusRequest
 {
-    public Guid AgentId { get; set; }
+    public Guid AgentCode { get; set; }
+    public Guid DeviceCode { get; set; }
     public string DeviceIdentifier { get; set; } = string.Empty;
     public string DeviceName { get; set; } = string.Empty;
     public string DeviceType { get; set; } = string.Empty;

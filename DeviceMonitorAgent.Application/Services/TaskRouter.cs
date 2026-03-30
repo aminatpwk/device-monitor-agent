@@ -53,11 +53,20 @@ namespace DeviceMonitorAgent.Application.Services
             _logger.LogInformation("Routing task {TaskId} of type {TaskType}", task.TaskId, task.TaskType);
             if (IsAgentTask(task))
             {
+                var registration = _agentStateRepository.GetAgentRegistration();
+                if (registration == null || task.DeviceId != registration.AgentCode)
+                {
+                    _logger.LogWarning(
+                        "Agent task {TaskId} targets {TargetId} but this agent's code is {AgentCode}. Skipping.",
+                        task.TaskId, task.DeviceId, registration?.AgentCode);
+                    return;
+                }
+
                 ExecuteAgentTask(task);
             }
             else if(IsDeviceTask(task))
             {
-                ExecuteDeviceTask(task);
+                _ = ExecuteDeviceTask(task);
             }
             else
             {
