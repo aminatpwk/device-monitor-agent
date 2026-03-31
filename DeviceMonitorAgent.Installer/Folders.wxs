@@ -1,7 +1,13 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
-    <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLFOLDER" Name="!(bind.Property.Manufacturer) !(bind.Property.ProductName)" />
-    </StandardDirectory>
+	  <StandardDirectory Id="ProgramFiles64Folder">
+		  <Directory Id="INSTALLFOLDER" Name="DeviceMonitorAgent" />
+	  </StandardDirectory>
+
+	  <StandardDirectory Id="CommonAppDataFolder">
+		  <Directory Id="DATAFOLDERROOT" Name="DeviceMonitorAgent">
+			  <Directory Id="DATAFOLDER" Name="Data" />
+		  </Directory>
+	  </StandardDirectory>
   </Fragment>
 </Wix>

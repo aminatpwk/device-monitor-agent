@@ -1,9 +1,42 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package Id="TODO_Manufacturer.DeviceMonitorAgent.Installer" Name="DeviceMonitorAgent.Installer" Manufacturer="TODO Manufacturer" Version="1.0.0.0">
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
-
-    <Feature Id="Main">
-      <ComponentGroupRef Id="ExampleComponents" />
+  <Package Name="Device Monitor Agent" Version="1.0.0.0" Manufacturer="Amina" UpgradeCode="{4FC1A4B4-7FFE-49B4-A6F4-A7B3AF6FBF3D}">
+	  <MajorUpgrade DowngradeErrorMessage="A newer version is already installed." />
+	  
+	  <Property Id="REGISTER_ONLINE" Value="1" />
+	  <Property Id="DEVICE_CODE" />
+	  <Property Id="SERIAL_NUMBER" />
+	  
+	  <Feature Id="Main" Title="Device Monitor Agent" Level="1">
+		  <ComponentGroupRef Id="AgentBinaries" />
+		  <ComponentGroupRef Id="AgentData" />
+		  <ComponentGroupRef Id="AgentService" />
     </Feature>
+
+	  <Binary Id="DeviceMonitorAgent.Installer.CA"
+	          SourceFile="..\DeviceMonitorAgent.Installer.CA\bin\Release\net9.0-windows\DeviceMonitorAgent.Installer.CA.dll" />
+	  
+	  <CustomAction Id="ReadSerialNumber"
+	                DllEntry="ReadSerialNumber"
+	                BinaryRef="DeviceMonitorAgent.Installer.CA"
+	                Execute="deferred"
+	                Impersonate="no"
+	                Return="check" />
+
+    <CustomAction Id="RegisterDevice"
+                  DllEntry="RegisterDevice"
+                  BinaryRef="DeviceMonitorAgent.Installer.CA"
+                  Execute="deferred"
+                  Impersonate="no"
+                  Return="check" />
+
+    <InstallExecuteSequence>
+		<Custom Action="ReadSerialNumber"
+		        After="InstallInitialize"
+		        Condition="REGISTER_ONLINE = &quot;1&quot;" />
+		
+	    <Custom Action="RegisterDevice"
+	            After="ReadSerialNumber"
+	            Condition="REGISTER_ONLINE = &quot;1&quot;" />
+    </InstallExecuteSequence>
   </Package>
 </Wix>

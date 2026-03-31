@@ -1,0 +1,50 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+
+		<ComponentGroup Id="AgentBinaries" Directory="INSTALLFOLDER">
+			<Component Id="AgentExe">
+				<File Source="$(var.PublishDir)DeviceMonitorAgent.Worker.exe"
+					  KeyPath="yes" />
+			</Component>
+			<Component Id="AgentDlls">
+				<File Source="$(var.PublishDir)DeviceMonitorAgent.Application.dll" />
+				<File Source="$(var.PublishDir)DeviceMonitorAgent.Domain.dll" />
+				<File Source="$(var.PublishDir)DeviceMonitorAgent.Infrastructure.dll" />
+			</Component>
+		</ComponentGroup>
+
+		<ComponentGroup Id="AgentService" Directory="INSTALLFOLDER">
+			<Component Id="AgentServiceComponent" Guid="{FDD02BF3-0AE8-45E1-BAB4-F91BD00C7066}">
+				<RegistryValue Root="HKLM"
+							   Key="SOFTWARE\DeviceMonitorAgent"
+							   Name="ServiceInstalled"
+							   Value="1"
+							   Type="integer"
+							   KeyPath="yes" />
+				<ServiceInstall Id="AgentServiceInstall"
+								Name="DeviceMonitorAgent"
+								DisplayName="Device Monitor Agent"
+								Description="Monitors and manages connected devices"
+								Type="ownProcess"
+								Start="auto"
+								ErrorControl="normal"
+								Account="LocalSystem" />
+				<ServiceControl Id="AgentServiceControl"
+								Name="DeviceMonitorAgent"
+								Start="install"
+								Stop="both"
+								Remove="uninstall"
+								Wait="yes" />
+			</Component>
+		</ComponentGroup>
+
+		<ComponentGroup Id="AgentData" Directory="DATAFOLDER">
+			<Component Id="DataFolder"
+					   Guid="{DB34714F-B5A5-4816-904C-B3DA18C3ED52}"
+					   Permanent="yes">
+				<CreateFolder />
+			</Component>
+		</ComponentGroup>
+
+	</Fragment>
+</Wix>
